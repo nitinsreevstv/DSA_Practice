@@ -111,7 +111,7 @@ public class LinkedList {
 		System.out.println(ll.removeFirst());
 		
 		ll.removeLast();
-		ll.print();
+		ll.print(); //For print the Linked List data
 		
 		
 
