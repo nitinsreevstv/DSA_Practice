@@ -46,6 +46,8 @@ public class LinkedList {
 		System.out.println();
 	}
 	
+	// to add node at any index
+	
 	public void add(int idx, int value) {
 		Node newNode = new Node(value);
 		Node temp = head;
@@ -111,7 +113,7 @@ public class LinkedList {
 		System.out.println(ll.removeFirst());
 		
 		ll.removeLast();
-		ll.print();
+		ll.print(); //For print the Linked List data
 		
 		
 
