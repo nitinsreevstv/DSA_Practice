@@ -46,8 +46,6 @@ public class LinkedList {
 		System.out.println();
 	}
 	
-	// to add node at any index
-	
 	public void add(int idx, int value) {
 		Node newNode = new Node(value);
 		Node temp = head;
@@ -84,6 +82,7 @@ public class LinkedList {
 			return;
 		}else if(size == 1) {
 			head=tail=null;
+			size--;
 			return;
 		}
 		Node prev = head;
@@ -91,8 +90,76 @@ public class LinkedList {
 			prev = prev.next;
 		}
 		prev.next = null;
+		size--;
 		tail = prev;
 	}
+	
+	public void remove(int index) {
+		if(head==null) {
+			System.out.println("LinkedList is Empty");
+			return;
+		}else if(size==1) {
+			size--;
+			head = tail = null;
+			return;
+		}
+		Node temp = head;
+		int i = 0;
+		while (i < index - 1) {
+			i++;
+			temp = temp.next;
+		}
+		temp.next = temp.next.next;
+	}
+	
+	// Iterative Search
+	public int itrSearch(int value) {
+		Node temp = head;
+		int i = 0;
+		while(temp != null) {
+			if(temp.data==value) {
+				return i;
+			}
+			temp = temp.next;
+			i++;
+		}
+		return -1;
+	}
+	
+	public Node reverse(Node head) {
+		if(head == null) {
+			System.out.println("LinkedList is Empty");
+		}
+		Node prev = null;
+		Node nxt = null;
+		while(head!=null) {
+			nxt = head.next;
+			head.next = prev;
+			prev = head;
+			head = nxt;
+		}
+		return prev;
+	}
+	
+	// Helper function for recursive search
+	public int helper(Node head, int key) {
+		if(head==null) {
+			return -1;
+		}
+		if(head.data == key) {
+			return 0;
+		}
+		int idx = helper(head.next,key);
+		if(idx == -1) {
+			return -1;
+		}
+		return idx+1;
+	}
+	
+	public int recSearch(int key) {
+		return helper(head,key);
+	}
+	
 
 	public static void main(String[] args) {
 		LinkedList ll = new LinkedList();
@@ -106,17 +173,13 @@ public class LinkedList {
 		ll.addLast(5);
 		ll.print();
 		ll.add(2, 8);
-
 		ll.print();
 		System.out.println(ll.size);
-		
-		System.out.println(ll.removeFirst());
-		
-		ll.removeLast();
-		ll.print(); //For print the Linked List data
-		
-		
-
+		System.out.println(ll.recSearch(12));
+//		ll.removeLast();
+//		ll.print();
+//		ll.remove(1);
+		ll.print();
 	}
 
 }
