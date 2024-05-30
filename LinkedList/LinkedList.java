@@ -176,7 +176,7 @@ public class LinkedList {
 		ll.print();
 		System.out.println(ll.size);
 		System.out.println(ll.recSearch(12));
-		ll.removeLast();
+		//ll.removeLast();
 //		ll.print();
 //		ll.remove(1);
 		ll.print();
