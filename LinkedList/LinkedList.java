@@ -179,6 +179,7 @@ public class LinkedList {
 //		ll.removeLast();
 //		ll.print();
 //		ll.remove(1);
+		{}
 		ll.print();
 	}
 
